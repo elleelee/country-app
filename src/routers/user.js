@@ -2,7 +2,8 @@ const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 const router = new express.Router()
-
+const restcountries = require('../utils/restcountries')
+const fixer = require('../utils/fixer')
 
 
 // User
@@ -43,6 +44,26 @@ router.post('/users/logout', auth, async (req, res) => {
 
 router.get('/users/me', auth, async (req, res) => {
   res.send(req.user)
+})
+
+router.get('/users/data', auth, async (req, res) => {
+  restcountries('taiwan', (error, { name, population, currencies } = {}) => {
+    if (error) {
+      return res.send({ error })
+    }
+
+    fixer(currencies,(error, currencyData) => {
+      if (error) {
+        return res.send({ error })
+      }
+      res.send({
+        name,
+        population,
+        currencies,
+        exchangeRate: currencyData
+      })
+    })
+  })
 })
 
 module.exports = router
