@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const limiter = require('../middleware/rate')
 const router = new express.Router()
 const restcountries = require('../utils/restcountries')
 const fixer = require('../utils/fixer')
@@ -46,8 +47,8 @@ router.get('/users/me', auth, async (req, res) => {
   res.send(req.user)
 })
 
-router.get('/users/data', auth, async (req, res) => {
-  restcountries('taiwan', (error, { name, population, currencies } = {}) => {
+router.get('/users/data', auth, limiter, async (req, res) => {
+  restcountries('denmark', (error, { name, population, currencies } = {}) => {
     if (error) {
       return res.send({ error })
     }
