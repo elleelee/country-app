@@ -8,7 +8,7 @@
 }
 
 .navbar-light {
-  background-color: #badfdb;
+  background-color: #094074;
   min-height: 70px;
   display: flex;
   align-items: center;
@@ -26,7 +26,27 @@
   align-items: center;
 }
 
+.nav-left-content {
+  color: #FFF;
+  font-weight: bolder;
+}
+
+.nav-left-content img {
+  width: 60px;
+  margin-left: 8px;
+}
+
 .navbar-brand p {
   margin-bottom: 0;
   margin-left: 1em;
+}
+
+.logout {
+  cursor: pointer;
+  color: #FFF;
+  opacity: 0.7;
+}
+
+.logout:hover {
+  opacity: 1;
 }

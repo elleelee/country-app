@@ -11,14 +11,8 @@ class AuthPage extends Component {
       email: '',
       password: ''
     };
-    this.routeChange = this.routeChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-  }
-
-  routeChange = () => {
-    let path = `/register`;
-    this.props.history.push(path);
   }
 
   handleEmailChange = (event) => {
@@ -78,7 +72,6 @@ class AuthPage extends Component {
               <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
             <div className="form-actions">
-              <button type="button" onClick={this.routeChange} className="btn btn-primary margin-right">Switch To Register</button>
               <button type="submit" className="btn btn-primary">Login</button>
             </div>
           </form>

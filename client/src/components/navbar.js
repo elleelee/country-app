@@ -11,8 +11,8 @@ const navbar =  props => (
             <div className="navbar-brand" >
               <div className="nav-left">
                 <div className="nav-left-content">
-                  <img src="" alt=""/>
-                  Currency Look Up
+                  <p>countryLookup</p>
+                  <img src="world.svg" alt="world-logo"/>
                 </div>
               </div>
               <div className="nav-right">
@@ -23,7 +23,7 @@ const navbar =  props => (
                   <NavLink to="/login">Login</NavLink>
                 )}
                 {context.token && (
-                  <button onClick={context.logout}>Logout</button>
+                  <span onClick={context.logout} className="logout">Logout</span>
                 )}
               </div>
             </div>
