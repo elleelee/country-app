@@ -1,0 +1,32 @@
+.navbar {
+  left: 0;
+  top: 0;
+/*  position: fixed;
+  transform: translateZ(0);*/
+  width: 100%;
+/*  z-index: 10;*/
+}
+
+.navbar-light {
+  background-color: #badfdb;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left-content {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand p {
+  margin-bottom: 0;
+  margin-left: 1em;
+}

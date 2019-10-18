@@ -1,0 +1,23 @@
+@import "_navbar.css";
+@import "_footer.css";
+@import "_form.css";
+
+
+body {
+ background-color: #fcf9ea;
+ color: #424444;
+}
+
+.min-height {
+  min-height: 100vh;
+  position: relative;
+}
+
+h1 {
+  color: #ea854b;
+}
+
+#container-padding {
+  padding-bottom: 12rem;
+  padding-top: 10rem;
+}
