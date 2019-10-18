@@ -77,16 +77,16 @@ class CreateUserPage extends Component {
         <div className="form-content">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label for="exampleInputName1">Name</label>
+              <label htmlFor="exampleInputName1">Name</label>
               <input type="text" onChange={this.handleNameChange} className="form-control" id="exampleInputName1" placeholder="Name" />
             </div>
             <div className="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label htmlFor="exampleInputEmail1">Email address</label>
               <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
               <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label htmlFor="exampleInputPassword1">Password</label>
               <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
             <div className="form-actions">
