@@ -7,7 +7,7 @@ const restcountries = (countryName, callback) => {
   request({url, json: true}, (error, { body } ) => {
     if (error) {
       callback('Unable to connect to the web service!', undefined)
-    } else if (body.error) {
+    } else if (body.status === 404) {
       callback('Unable to find country!', undefined)
     } else {
       callback(undefined, {
@@ -18,34 +18,5 @@ const restcountries = (countryName, callback) => {
     }
   })
 }
-
-
-
-
-
-
-
-// const restcountries = (callback) => {
-//   const url = `https://restcountries.eu/rest/v2/all`
-//   request({url, json: true}, (error, { body } ) => {
-//     if (error) {
-//       callback('Unable to connect to the web service!', undefined)
-//     } else if (body.error) {
-//       callback('Unable to find country!', undefined)
-//     } else {
-//       const countriesAll = []
-//       body.forEach((country) => {
-//         const name = country.name
-//         const population = country.population
-//         const currencies = country.currencies[0]
-//         const exchangeRate = 'rate'
-
-//         return countriesAll.push({name, population, currencies, exchangeRate})
-//       })
-//       callback(undefined, countriesAll)
-//     }
-//   })
-// }
-
 
 module.exports = restcountries

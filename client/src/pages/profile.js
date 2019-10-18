@@ -44,12 +44,18 @@ class ProfilePage extends Component {
       }
     })
       .then((res) => {
-        if(res.status !== 200 && res.status !== 201) {
-          throw new Error('Failed!');
+        if(res.status !== 200) {
+          throw new Error('Unable to connect to the web service!');
         }
         return res.json();
       })
       .then(resData => {
+        if (resData === undefined) {
+          throw new Error('Country has been added to the list!')
+        }
+        if (resData.error) {
+          throw new Error('Cannot find country!')
+        }
         this.setState(state => {
           const countries = state.countries.concat(resData)
           return {
