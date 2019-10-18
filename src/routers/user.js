@@ -48,7 +48,13 @@ router.get('/users/me', auth, async (req, res) => {
 })
 
 router.get('/users/data', auth, limiter, async (req, res) => {
-  restcountries('denmark', (error, { name, population, currencies } = {}) => {
+  if (!req.query.country) {
+    return res.send({
+      error: 'You must provide a country!'
+    })
+  }
+
+  restcountries(req.query.country, (error, { name, population, currencies } = {}) => {
     if (error) {
       return res.send({ error })
     }
