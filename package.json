@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env npm run server",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
-  },
-  "engines": {
-    "node": "12.10.0"
   },
   "author": "",
   "license": "ISC",
