@@ -54,7 +54,7 @@ router.get('/users/data', auth, limiter, async (req, res) => {
     })
   }
 
-  restcountries(req.query.country, (error, { name, population, currencies } = {}) => {
+  restcountries(req.query.country, (error, { name, population, currencies, currencySign, flag } = {}) => {
     if (error) {
       return res.send({ error })
     }
@@ -67,6 +67,8 @@ router.get('/users/data', auth, limiter, async (req, res) => {
         name,
         population,
         currencies,
+        currencySign,
+        flag,
         exchangeRate: currencyData
       })
     })

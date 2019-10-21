@@ -5,11 +5,12 @@
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: #3f847c;
-  opacity: 0.7;
-/*  position: absolute;
+  color: #FFF;
+  opacity: 0.8;
+  position: absolute;
   bottom: 0;
-  width: 100%;*/
+  width: 100%;
+  margin-top: 20px;
 }
 
 .footer-links {
@@ -18,7 +19,7 @@
 }
 
 .footer-links a {
-  color: #3f847c;
+  color: #FFF;
   opacity: 0.7;
   text-decoration: none;
   font-size: 28px;
@@ -38,6 +39,7 @@
 
 .footer-copyright {
   font-size: 18px;
+  opacity: 1;
 }
 
 @media(max-width: 768px) {
@@ -45,6 +47,11 @@
     font-size: 14px;
     margin-left: 0.6em;
   }
+}
+
+#footer-content {
+  color: #FFF;
+  opacity: 1;
 }
 
 .footer-img {

@@ -13,7 +13,9 @@ const restcountries = (countryName, callback) => {
       callback(undefined, {
         name: body[0].name,
         population: body[0].population,
-        currencies: body[0].currencies[0].code
+        currencies: body[0].currencies[0].code,
+        currencySign: body[0].currencies[0].symbol,
+        flag: body[0].flag
       })
     }
   })

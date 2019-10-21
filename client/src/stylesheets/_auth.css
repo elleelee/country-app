@@ -1,0 +1,28 @@
+.form-content {
+  width: 60%;
+  margin: 20px auto 36px auto;
+}
+
+.margin-right {
+  margin-right: 1em;
+}
+
+.display-none {
+  display: none;
+}
+
+.login-img {
+  width: 200px;
+  display: block;
+  margin: 36px auto;
+}
+
+.form-label {
+  font-size: 18px;
+}
+
+#bigger-button {
+  margin-top: 36px;
+  font-size: 18px;
+  padding: 2px 10px;
+}

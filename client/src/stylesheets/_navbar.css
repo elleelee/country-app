@@ -4,6 +4,7 @@
 /*  position: fixed;
   transform: translateZ(0);*/
   width: 100%;
+  padding: 0 35px;
 /*  z-index: 10;*/
 }
 
@@ -41,12 +42,18 @@
   margin-left: 1em;
 }
 
-.logout {
+#link {
   cursor: pointer;
   color: #FFF;
   opacity: 0.7;
+  text-decoration: none;
 }
 
-.logout:hover {
+#link:hover {
   opacity: 1;
+}
+
+#profile-link {
+  cursor: pointer;
+  color: #FFF;
 }

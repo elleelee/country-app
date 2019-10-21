@@ -59,20 +59,22 @@ class AuthPage extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="container-padding">
+      <img src="login.svg" alt="log-in" className="login-img" />
+      <h2 className="text-center my-5">Log In</h2>
         <div className="form-content">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
+              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
               <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
               <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
+              <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
               <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
             <div className="form-actions">
-              <button type="submit" className="btn btn-primary">Login</button>
+              <button type="submit" className="btn btn-primary form-control" id="bigger-button">Login</button>
             </div>
           </form>
         </div>

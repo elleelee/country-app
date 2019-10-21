@@ -13,16 +13,16 @@ class CreateUserPage extends Component {
       email: '',
       password: ''
     };
-    this.routeChange = this.routeChange.bind(this);
+    // this.routeChange = this.routeChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
 
-  routeChange = () => {
-    let path = `/login`;
-    this.props.history.push(path);
-  }
+  // routeChange = () => {
+  //   let path = `/login`;
+  //   this.props.history.push(path);
+  // }
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
@@ -73,25 +73,26 @@ class CreateUserPage extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="container-padding">
+      <img src="register.svg" alt="log-in" className="login-img" />
+      <h2 className="text-center my-5">Create An Account</h2>
         <div className="form-content">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="exampleInputName1">Name</label>
+              <label htmlFor="exampleInputName1" className="form-label">Name</label>
               <input type="text" onChange={this.handleNameChange} className="form-control" id="exampleInputName1" placeholder="Name" />
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
+              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
               <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
               <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
+              <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
               <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
             <div className="form-actions">
-              <button type="button" onClick={this.routeChange} className="btn btn-primary margin-right">Switch To Login</button>
-              <button type="submit" className="btn btn-primary">Register</button>
+              <button type="submit" className="btn btn-primary form-control" id="bigger-button">Get Started!</button>
             </div>
           </form>
         </div>

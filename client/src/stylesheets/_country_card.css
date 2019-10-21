@@ -1,0 +1,17 @@
+.country-card {
+  border-radius: 4px;
+  background-color: #FFF;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+
+.country-right {
+  text-align: right;
+}
+
+.exchange {
+  color: #575D90;
+}

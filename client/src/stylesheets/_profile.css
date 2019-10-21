@@ -1,0 +1,37 @@
+.bold-text {
+  font-weight: bold;
+}
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+#country-button {
+  margin-top: 8px;
+  font-size: 18px;
+  padding: 2px 10px;
+}
+
+.converter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3em;
+}
+
+.converter-input {
+  width: 180px;
+}
+
+.country-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#country-flag {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1em;
+}

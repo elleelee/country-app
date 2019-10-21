@@ -11,8 +11,8 @@ class Footer extends Component {
           <a href="https://www.linkedin.com/in/ellenleelbs/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
         </div>
         <div className="footer-copyright">
-          <img src="" alt="" className="footer-img"/>
-          This web app was created by Ellen Lee
+          <img src="footer.svg" alt="web-app" className="footer-img"/>
+          <span id="footer-content">This web app was created by Ellen Lee</span>
         </div>
       </div>
     );

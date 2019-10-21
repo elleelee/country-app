@@ -11,19 +11,18 @@ const navbar =  props => (
             <div className="navbar-brand" >
               <div className="nav-left">
                 <div className="nav-left-content">
-                  <p>countryLookup</p>
-                  <img src="world.svg" alt="world-logo"/>
+                  <NavLink to="/profile"><span id="profile-link">countryLookup</span><img src="world.svg" alt="world-logo"/></NavLink>
                 </div>
               </div>
               <div className="nav-right">
                 {!context.token && (
-                  <NavLink to="/register"><span className="margin-right">Register</span></NavLink>
+                  <NavLink to="/register"><span className="margin-right" id="link">Register</span></NavLink>
                 )}
                 {!context.token && (
-                  <NavLink to="/login">Login</NavLink>
+                  <NavLink to="/login" id="link">Login</NavLink>
                 )}
                 {context.token && (
-                  <span onClick={context.logout} className="logout">Logout</span>
+                  <span onClick={context.logout} id="link">Logout</span>
                 )}
               </div>
             </div>

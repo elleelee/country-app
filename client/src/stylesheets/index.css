@@ -1,11 +1,12 @@
 @import "_navbar.css";
 @import "_footer.css";
-@import "_form.css";
+@import "_auth.css";
+@import "_profile.css";
+@import "_country_card.css";
 
 
 body {
- background-color: #FFF;
- color: #424444;
+ background-color: #eff1f2;
 }
 
 .min-height {
@@ -13,11 +14,10 @@ body {
   position: relative;
 }
 
-h1 {
-  color: #ea854b;
+h1, h2 {
+  color: #575D90;
 }
 
 #container-padding {
-  padding-bottom: 12rem;
-  padding-top: 10rem;
+  padding-bottom: 15rem;
 }
