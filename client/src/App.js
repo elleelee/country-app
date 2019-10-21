@@ -12,16 +12,17 @@ import './stylesheets/index.css';
 
 class App extends Component {
   state = {
-    token: null,
+    token: sessionStorage.getItem("token") || null,
     userId: null
   };
 
-  login = (token, userId) => {
-    this.setState({ token: token, userId: userId });
+  login = (token) => {
+    sessionStorage.setItem("token", token);
+    this.setState({ token: token });
   };
 
   logout = () => {
-    this.setState({ token: null, userId: null });
+    this.setState({ token: null });
   };
 
   render() {
@@ -31,7 +32,6 @@ class App extends Component {
           <AuthContext.Provider
             value = {{
               token: this.state.token,
-              userId: this.state.userId,
               login: this.login,
               logout: this.logout
             }}

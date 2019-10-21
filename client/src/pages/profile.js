@@ -7,7 +7,7 @@ class ProfilePage extends Component {
     super(props);
     this.state = {
       search: '',
-      countries:[],
+      countries: [],
       SEK: '',
       showSEK: false,
       result: '',
@@ -40,8 +40,13 @@ class ProfilePage extends Component {
     });
   }
 
+
   handleSubmit = (event) => {
     event.preventDefault();
+
+    if(this.state.countries.some(country => country.name.toLowerCase() === this.state.search.toLowerCase())) {
+      return this.setState({alert: 'Country has been added. Please search again!'})
+    }
 
     fetch(`/users/data?country=${this.state.search}`, {
       method:"GET",
@@ -57,16 +62,14 @@ class ProfilePage extends Component {
       })
       .then(resData => {
         if (resData.error) {
-          this.setState({alert: 'Cannot find country or country has been added! Please try again.'})
-          throw new Error('Cannot find country or country has been added!')
+          this.setState({alert: 'Cannot find country! Please try again.'})
+          throw new Error('Cannot find country!')
         }
-        this.setState(state => {
-          const countries = state.countries.concat(resData)
-          return {
+        const countries = this.state.countries.concat(resData)
+        this.setState({
             countries,
-            search:'',
-            alert:'Search successful!'
-          };
+            search: '',
+            alert: 'Search successful!'
         });
       })
       .catch((error) => {
@@ -82,7 +85,7 @@ class ProfilePage extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputSearch1" className="form-label">Country Search</label>
-            <input type="text" onChange={this.handleSearchChange} className="form-control" id="exampleInputSearch1" placeholder="Enter a country" />
+            <input type="text" onChange={this.handleSearchChange} className="form-control" id="exampleInputSearch1" placeholder="Enter a country" value={this.state.search} autoComplete="off" />
           </div>
           <div className="form-actions">
             <button type="submit" className="btn btn-primary form-control" id="country-button">Search</button>
@@ -94,7 +97,7 @@ class ProfilePage extends Component {
             <form onSubmit={this.handleSEKSubmit}>
               <div className="converter">
                 <label htmlFor="exampleInputCurrency1" className="form-label margin-right">Currency Converter (SEK)</label>
-                <input type="text" onChange={this.displayRateHandler} className="form-control converter-input" id="exampleInputCurrency1" placeholder="Enter SEK & Hit Enter" value={this.state.SEK} />
+                <input type="text" onChange={this.displayRateHandler} className="form-control converter-input" id="exampleInputCurrency1" placeholder="Enter SEK & Hit Enter" value={this.state.SEK} autoComplete="off" />
                 <button type="submit" className="btn btn-primary display-none">Submit</button>
               </div>
               {this.state.countries.map((country) => (
