@@ -4,8 +4,9 @@ import AuthContext from '../context/auth-context';
 
 class ProfilePage extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
+  super(props);
+  // const storedCountries = JSON.parse(sessionStorage.getItem("countries"));
+  this.state = {
       search: '',
       countries: [],
       SEK: '',
@@ -19,6 +20,13 @@ class ProfilePage extends Component {
   }
 
   static contextType = AuthContext;
+
+  componentDidMount() {
+    if(sessionStorage.countries !== undefined) {
+      const storedCountries = JSON.parse(sessionStorage.getItem("countries"));
+      this.setState({countries: storedCountries})
+    }
+  }
 
   formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -66,6 +74,8 @@ class ProfilePage extends Component {
           throw new Error('Cannot find country!')
         }
         const countries = this.state.countries.concat(resData)
+        sessionStorage.setItem("countries", JSON.stringify(countries));
+        console.log(sessionStorage.countries)
         this.setState({
             countries,
             search: '',

@@ -22,6 +22,7 @@ class App extends Component {
   };
 
   logout = () => {
+    sessionStorage.clear();
     this.setState({ token: null });
   };
 
