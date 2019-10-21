@@ -56,13 +56,9 @@ class ProfilePage extends Component {
         return res.json();
       })
       .then(resData => {
-        if (resData === undefined) {
-          this.setState({alert: 'Country has been added to the list!'})
-          throw new Error('Country has been added to the list!')
-        }
         if (resData.error) {
-          this.setState({alert: 'Cannot find country! Please try again.'})
-          throw new Error('Cannot find country!')
+          this.setState({alert: 'Cannot find country or country has been added! Please try again.'})
+          throw new Error('Cannot find country or country has been added!')
         }
         this.setState(state => {
           const countries = state.countries.concat(resData)
