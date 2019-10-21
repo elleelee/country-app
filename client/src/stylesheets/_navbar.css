@@ -56,4 +56,7 @@
 #profile-link {
   cursor: pointer;
   color: #FFF;
+  text-decoration: none;
 }
+
+
