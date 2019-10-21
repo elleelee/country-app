@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthContext from  '../context/auth-context';
 
-
 class CreateUserPage extends Component {
 
   static contextType = AuthContext;
@@ -13,31 +12,22 @@ class CreateUserPage extends Component {
       email: '',
       password: ''
     };
-    // this.routeChange = this.routeChange.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this)
-    this.handleEmailChange = this.handleEmailChange.bind(this)
-    this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
 
-  // routeChange = () => {
-  //   let path = `/login`;
-  //   this.props.history.push(path);
-  // }
-
-  handleNameChange = (event) => {
-    this.setState({ name: event.target.value });
+  handleNameChange = (e) => {
+    this.setState({ name: e.target.value });
   }
 
-  handleEmailChange = (event) => {
-    this.setState({ email: event.target.value });
+  handleEmailChange = (e) => {
+    this.setState({ email: e.target.value });
   }
 
-  handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
+  handlePasswordChange = (e) => {
+    this.setState({ password: e.target.value });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     const user = {
       "name": this.state.name,
@@ -54,7 +44,7 @@ class CreateUserPage extends Component {
     })
       .then((res) => {
         if(res.status !== 200 && res.status !== 201) {
-          throw new Error('Failed!');
+          throw new Error('Email has been used!');
         }
         return res.json();
       })

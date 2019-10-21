@@ -3,9 +3,11 @@ import AuthContext from '../context/auth-context';
 
 
 class ProfilePage extends Component {
+
+  static contextType = AuthContext;
+
   constructor(props) {
   super(props);
-  // const storedCountries = JSON.parse(sessionStorage.getItem("countries"));
   this.state = {
       search: '',
       countries: [],
@@ -14,30 +16,25 @@ class ProfilePage extends Component {
       result: '',
       alert:''
     };
-    // this.formatNumber = this.formatNumber.bind(this);
-    // this.handleSearchChange = this.handleSearchChange.bind(this);
-    // this.displayRateHandler = this.displayRateHandler.bind(this);
   }
-
-  static contextType = AuthContext;
 
   componentDidMount() {
     if(sessionStorage.countries !== undefined) {
       const storedCountries = JSON.parse(sessionStorage.getItem("countries"));
-      this.setState({countries: storedCountries})
-    }
+      this.setState({countries: storedCountries});
+    };
   }
 
   formatNumber = (num) => {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   }
 
-  handleSearchChange = (event) => {
-    this.setState({ search: event.target.value });
+  handleSearchChange = (e) => {
+    this.setState({ search: e.target.value });
   }
 
-  displayRateHandler = (event) => {
-    let updatedSEK = event.target.value;
+  displayRateHandler = (e) => {
+    let updatedSEK = e.target.value;
     this.setState({SEK: updatedSEK});
   }
 
@@ -49,8 +46,8 @@ class ProfilePage extends Component {
   }
 
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     if(this.state.countries.some(country => country.name.toLowerCase() === this.state.search.toLowerCase())) {
       return this.setState({alert: 'Country has been added. Please search again!'})
@@ -75,7 +72,6 @@ class ProfilePage extends Component {
         }
         const countries = this.state.countries.concat(resData)
         sessionStorage.setItem("countries", JSON.stringify(countries));
-        console.log(sessionStorage.countries)
         this.setState({
             countries,
             search: '',

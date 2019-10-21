@@ -9,29 +9,26 @@ class AuthPage extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loginAlert: ''
     };
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleEmailChange = (event) => {
-    this.setState({ email: event.target.value });
+  handleEmailChange = (e) => {
+    this.setState({ email: e.target.value });
   }
 
-  handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
+  handlePasswordChange = (e) => {
+    this.setState({ password: e.target.value });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     const user = {
       "email": this.state.email,
       "password": this.state.password
     }
-
-    // console.log(user)
 
     fetch('/users/login', {
     method: 'post',
@@ -40,7 +37,8 @@ class AuthPage extends Component {
     })
       .then((res) => {
         if(res.status !== 200 && res.status !== 201) {
-          throw new Error('Failed!');
+          this.setState({loginAlert: 'Email or password wrong. Please try again.'})
+          throw new Error('Unable to login!');
         }
         return res.json();
       })
@@ -72,6 +70,9 @@ class AuthPage extends Component {
             <div className="form-group">
               <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
               <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+            </div>
+            <div className="loginAlert">
+              {this.state.loginAlert}
             </div>
             <div className="form-actions">
               <button type="submit" className="btn btn-primary form-control" id="bigger-button">Login</button>
