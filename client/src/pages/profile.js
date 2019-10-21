@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthContext from '../context/auth-context'
+import AuthContext from '../context/auth-context';
 
 
 class ProfilePage extends Component {
@@ -10,7 +10,8 @@ class ProfilePage extends Component {
       countries:[],
       SEK: '',
       showSEK: false,
-      result: ''
+      result: '',
+      alert:''
     };
     // this.formatNumber = this.formatNumber.bind(this);
     // this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -56,9 +57,11 @@ class ProfilePage extends Component {
       })
       .then(resData => {
         if (resData === undefined) {
+          this.setState({alert: 'Country has been added to the list!'})
           throw new Error('Country has been added to the list!')
         }
         if (resData.error) {
+          this.setState({alert: 'Cannot find country! Please try again.'})
           throw new Error('Cannot find country!')
         }
         this.setState(state => {
@@ -66,6 +69,7 @@ class ProfilePage extends Component {
           return {
             countries,
             search:'',
+            alert:'Search successful!'
           };
         });
       })
@@ -86,6 +90,7 @@ class ProfilePage extends Component {
           </div>
           <div className="form-actions">
             <button type="submit" className="btn btn-primary form-control" id="country-button">Search</button>
+            <p className="alert">{this.state.alert}</p>
           </div>
         </form>
 
