@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import AuthContext from  '../context/auth-context'
+import { NavLink } from 'react-router-dom';
+import AuthContext from  '../context/auth-context';
 
 class AuthPage extends Component {
 
@@ -60,6 +61,7 @@ class AuthPage extends Component {
       <div className="container" id="container-padding">
       <img src="login.svg" alt="log-in" className="login-img" />
       <h2 className="text-center my-5">Log In</h2>
+      <p className="text-center" id="register-link">Need a countryLookup account?<NavLink to="/register" id="account-link">Create an account</NavLink></p>
         <div className="form-content">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
