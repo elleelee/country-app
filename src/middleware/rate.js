@@ -1,4 +1,4 @@
-const app = require('../app')
+const app = require('../app');
 const rateLimit = require("express-rate-limit");
 
 const limiter = rateLimit({
@@ -6,5 +6,5 @@ const limiter = rateLimit({
   max: 30, // limit each IP to 30 requests per windowMs
 });
 
-module.exports = limiter
+module.exports = limiter;
 

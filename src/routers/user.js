@@ -1,51 +1,33 @@
-const express = require('express')
-const User = require('../models/user')
-const auth = require('../middleware/auth')
-const limiter = require('../middleware/rate')
-const router = new express.Router()
-const restcountries = require('../utils/restcountries')
-const fixer = require('../utils/fixer')
+const express = require('express');
+const User = require('../models/user');
+const auth = require('../middleware/auth');
+const limiter = require('../middleware/rate');
+const router = new express.Router();
+const restcountries = require('../utils/restcountries');
+const fixer = require('../utils/fixer');
 
 
-// User
 router.post('/users', async (req, res) => {
-  const user = new User(req.body)
+  const user = new User(req.body);
 
   try {
-    await user.save()
-    const token = await user.generateAuthToken()
-    res.status(201).send({ user, token })
+    await user.save();
+    const token = await user.generateAuthToken();
+    res.status(201).send({ user, token });
   } catch (e) {
-    res.status(400).send(e)
+    res.status(400).send(e);
   }
 })
 
 router.post('/users/login', async (req, res) => {
   try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
-    const token = await user.generateAuthToken()
-    res.send({ user, token })
+    const user = await User.findByCredentials(req.body.email, req.body.password);
+    const token = await user.generateAuthToken();
+    res.send({ user, token });
   } catch (e) {
-    res.status(400).send()
+    res.status(400).send();
   }
 })
-
-// router.post('/users/logout', auth, async (req, res) => {
-//   try {
-//     req.user.tokens = req.user.tokens.filter((token) => {
-//       return token.token !== req.token
-//     })
-//     await req.user.save()
-
-//     res.send()
-//   } catch (e) {
-//     res.status(500).send( )
-//   }
-// })
-
-// router.get('/users/me', auth, async (req, res) => {
-//   res.send(req.user)
-// })
 
 router.get('/users/data', auth, limiter, async (req, res) => {
   if (!req.query.country) {
@@ -56,12 +38,12 @@ router.get('/users/data', auth, limiter, async (req, res) => {
 
   restcountries(req.query.country, (error, { name, population, currencies, currencySign, flag } = {}) => {
     if (error) {
-      return res.send({ error })
+      return res.send({ error });
     }
 
     fixer(currencies,(error, currencyData) => {
       if (error) {
-        return res.send({ error })
+        return res.send({ error });
       }
       res.send({
         name,
@@ -75,4 +57,4 @@ router.get('/users/data', auth, limiter, async (req, res) => {
   })
 })
 
-module.exports = router
+module.exports = router;

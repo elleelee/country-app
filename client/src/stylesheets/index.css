@@ -1,8 +1,8 @@
-@import "_navbar.css";
-@import "_footer.css";
-@import "_auth.css";
-@import "_profile.css";
-@import "_country_card.css";
+@import "./components/_navbar.css";
+@import "./components/_footer.css";
+@import "./pages/_auth.css";
+@import "./pages/_profile.css";
+@import "./components/_country_card.css";
 
 
 body {

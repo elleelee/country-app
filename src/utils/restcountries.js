@@ -1,14 +1,14 @@
-const request = require('request')
-const fixer = require('./fixer')
+const request = require('request');
+const fixer = require('./fixer');
 
 
 const restcountries = (countryName, callback) => {
-  const url = `https://restcountries.eu/rest/v2/name/${countryName}`
-  request({url, json: true}, (error, { body } ) => {
+  const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
+  request({ url, json: true }, (error, { body } ) => {
     if (error) {
-      callback('Unable to connect to the web service!', undefined)
+      callback('Unable to connect to the web service!', undefined);
     } else if (body.status === 404) {
-      callback('Unable to find country!', undefined)
+      callback('Unable to find country!', undefined);
     } else {
       callback(undefined, {
         name: body[0].name,
@@ -21,4 +21,4 @@ const restcountries = (countryName, callback) => {
   })
 }
 
-module.exports = restcountries
+module.exports = restcountries;

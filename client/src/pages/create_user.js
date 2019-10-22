@@ -33,9 +33,7 @@ class CreateUserPage extends Component {
       "name": this.state.name,
       "email": this.state.email,
       "password": this.state.password
-    }
-
-    // console.log(user)
+    };
 
     fetch('/users', {
     method: 'post',
@@ -54,7 +52,7 @@ class CreateUserPage extends Component {
             resData.token,
             resData.user._id
           );
-        }
+        };
       })
       .catch((error) => {
         console.log(error);
@@ -70,16 +68,17 @@ class CreateUserPage extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="exampleInputName1" className="form-label">Name</label>
-              <input type="text" onChange={this.handleNameChange} className="form-control" id="exampleInputName1" placeholder="Name" />
+              <input type="text" onChange={this.handleNameChange} className="form-control" id="exampleInputName1" placeholder="Name" autoComplete="off" />
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-              <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autoComplete="off" />
               <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-              <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Password" autoComplete="off" />
+              <small id="passwordHelp" className="form-text text-muted">Minimum 7 characters.</small>
             </div>
             <div className="form-actions">
               <button type="submit" className="btn btn-primary form-control" id="bigger-button">Get Started!</button>

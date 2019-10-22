@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-import AuthContext from '../context/auth-context'
+import AuthContext from '../context/auth-context';
 
 const navbar =  props => (
   <AuthContext.Consumer>

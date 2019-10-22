@@ -21,6 +21,12 @@
   font-size: 18px;
 }
 
+@media(max-width: 768px) {
+  .form-label {
+    font-size: 14px;
+  }
+}
+
 #bigger-button {
   margin-top: 36px;
   font-size: 18px;

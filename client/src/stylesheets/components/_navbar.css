@@ -1,11 +1,14 @@
 .navbar {
   left: 0;
   top: 0;
-/*  position: fixed;
-  transform: translateZ(0);*/
   width: 100%;
   padding: 0 35px;
-/*  z-index: 10;*/
+}
+
+@media(max-width: 768px) {
+  .navbar {
+    padding: 0 8px;
+  }
 }
 
 .navbar-light {
@@ -25,9 +28,6 @@
 .nav-left-content {
   display: flex;
   align-items: center;
-}
-
-.nav-left-content {
   color: #FFF;
   font-weight: bolder;
 }
@@ -35,6 +35,12 @@
 .nav-left-content img {
   width: 60px;
   margin-left: 8px;
+}
+
+@media(max-width: 768px) {
+  .nav-left-content img {
+    display: none;
+  }
 }
 
 .navbar-brand p {
@@ -58,5 +64,3 @@
   color: #FFF;
   text-decoration: none;
 }
-
-

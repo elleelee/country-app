@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthContext from '../context/auth-context';
 
-
 class ProfilePage extends Component {
 
   static contextType = AuthContext;
@@ -45,13 +44,13 @@ class ProfilePage extends Component {
     });
   }
 
-
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if(this.state.countries.some(country => country.name.toLowerCase().includes(this.state.search.toLowerCase()))) {
-      return this.setState({alert: 'Country has been added. Please search again!'})
-    }
+    if(this.state.countries.some(country => country.name.toLowerCase()
+      .includes(this.state.search.toLowerCase()))) {
+        return this.setState({alert: 'Country has been added. Please search again!'});
+      }
 
     fetch(`/users/data?country=${this.state.search}`, {
       method:"GET",
@@ -67,10 +66,11 @@ class ProfilePage extends Component {
       })
       .then(resData => {
         if (resData.error) {
-          this.setState({alert: 'Cannot find country! Please try again.'})
-          throw new Error('Cannot find country!')
+          this.setState({alert: 'Cannot find country! Please try again.'});
+          throw new Error('Cannot find country!');
         }
-        const countries = this.state.countries.concat(resData)
+
+        const countries = this.state.countries.concat(resData);
         sessionStorage.setItem("countries", JSON.stringify(countries));
         this.setState({
             countries,
@@ -83,11 +83,10 @@ class ProfilePage extends Component {
       })
   }
 
-
   render() {
     return (
       <div className="container" id="container-padding">
-        <h1 className="text-center margin-bottom">Welcome to the <span className="bold-text">countryLookup</span> Searchboard</h1>
+        <h1 className="text-center margin-bottom" id="profile-title">Welcome to the <span className="bold-text">countryLookup</span> Searchboard</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputSearch1" className="form-label">Country Search</label>
@@ -112,7 +111,7 @@ class ProfilePage extends Component {
                     <div className="country-left-box" >
                       <img src={country.flag} alt="flag" id="country-flag" />
                     </div>
-                    <div className="contry-left-text">
+                    <div className="country-left-text">
                       <h3>{country.name}</h3>
                       <p>Population: {this.formatNumber(country.population)}</p>
                     </div>

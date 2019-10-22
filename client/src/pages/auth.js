@@ -28,7 +28,7 @@ class AuthPage extends Component {
     const user = {
       "email": this.state.email,
       "password": this.state.password
-    }
+    };
 
     fetch('/users/login', {
     method: 'post',
@@ -37,7 +37,7 @@ class AuthPage extends Component {
     })
       .then((res) => {
         if(res.status !== 200 && res.status !== 201) {
-          this.setState({loginAlert: 'Email or password wrong. Please try again.'})
+          this.setState({loginAlert: 'Email or password wrong. Please try again.'});
           throw new Error('Unable to login!');
         }
         return res.json();
@@ -48,7 +48,7 @@ class AuthPage extends Component {
             resData.token,
             resData.user._id
           );
-        }
+        };
       })
       .catch((error) => {
         console.log(error);
@@ -65,7 +65,6 @@ class AuthPage extends Component {
             <div className="form-group">
               <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
               <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1" className="form-label">Password</label>

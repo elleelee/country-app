@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import AuthPage from './pages/auth'
-import CreateUserPage from './pages/create_user'
-import ProfilePage from './pages/profile'
-import Navbar from './components/navbar'
-import Footer from './components/footer'
-import AuthContext from './context/auth-context'
+import AuthPage from './pages/auth';
+import CreateUserPage from './pages/create_user';
+import ProfilePage from './pages/profile';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import AuthContext from './context/auth-context';
 
 import './stylesheets/index.css';
 
