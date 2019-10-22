@@ -22,7 +22,8 @@ class App extends Component {
   };
 
   logout = () => {
-    sessionStorage.clear();
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("countries");
     this.setState({ token: null });
   };
 

@@ -49,7 +49,7 @@ class ProfilePage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if(this.state.countries.some(country => country.name.toLowerCase() === this.state.search.toLowerCase())) {
+    if(this.state.countries.some(country => country.name.toLowerCase().includes(this.state.search.toLowerCase()))) {
       return this.setState({alert: 'Country has been added. Please search again!'})
     }
 
